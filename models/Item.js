@@ -10,7 +10,7 @@ const itemSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    userId: {
+    sellerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,

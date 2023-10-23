@@ -26,7 +26,7 @@ exports.createCatalog = async (req, res) => {
         // ######### Validations Ends #########
 
         // appending each item with the seller id
-        const itemsWithSellerId = items.map(item => { return { ...item, userId: id } });
+        const itemsWithSellerId = items.map(item => { return { ...item, sellerId: id } });
 
         // creating items entry in database
         const itemsCreated = await Item.create(itemsWithSellerId);
