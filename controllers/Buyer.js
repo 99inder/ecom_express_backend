@@ -27,6 +27,7 @@ exports.sellerCatalog = async (req, res) => {
         let { seller_id } = req.params;
         seller_id = seller_id.trim();
 
+        // ########### VALIDATIONS AND DATA RETRIEVAL ###########
         if (!seller_id.length) {
             return res.status(404).json({
                 success: false,
@@ -35,22 +36,22 @@ exports.sellerCatalog = async (req, res) => {
         }
 
         // Find seller in DB and populate its catalog
-        // const user = await User.findOne({ _id: seller_id, type: "seller" }).populate("items").exec();
-        const seller = await User.findOne({ _id: seller_id, type: "seller" });
+        const seller = await User.findOne({ _id: seller_id, type: "seller" }).populate("items").exec();
 
         // return if seller not found
-        if(!seller) {
+        if (!seller) {
             return res.status(404).json({
                 success: false,
-                message: "Inavlid seller_id."
+                message: "Invalid seller_id"
             })
         }
+        // ########### VALIDATIONS AND DATA RETRIEVAL ENDS ###########
 
         // return the seller catalog
         return res.status(200).json({
             success: true,
             message: "Seller Catalog Fetched Successfully",
-            catalog: seller
+            catalog: seller.items,
         })
 
     } catch (error) {
