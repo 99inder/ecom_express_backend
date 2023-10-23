@@ -20,9 +20,9 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Order",
     }],
-    products: [{
+    items: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
+        ref: "Item",
     }],
 })
 

@@ -19,6 +19,9 @@ app.use("/api/auth", userRoutes);
 const buyerRoutes = require("./routes/Buyer");
 app.use("/api/buyer", buyerRoutes);
 
+const sellerRoutes = require("./routes/Seller");
+app.use("/api/seller", sellerRoutes);
+
 //default route
 app.get("/", (req, res) => {
     return res.status(200).json({

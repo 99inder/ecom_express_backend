@@ -73,7 +73,7 @@ exports.login = async (req, res) => {
         }
 
         //check if user exists
-        const user = await User.findOne({ username }, {orders: 0, products: 0});
+        const user = await User.findOne({ username }, {orders: 0, items: 0});
         
         if (!user) {
             return res.status(401).json({

@@ -35,7 +35,7 @@ exports.sellerCatalog = async (req, res) => {
         }
 
         // Find seller in DB and populate its catalog
-        // const user = await User.findOne({ _id: seller_id, type: "seller" }).populate("products").exec();
+        // const user = await User.findOne({ _id: seller_id, type: "seller" }).populate("items").exec();
         const seller = await User.findOne({ _id: seller_id, type: "seller" });
 
         // return if seller not found
