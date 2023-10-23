@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 // Connecting to Database
@@ -10,6 +11,7 @@ const app = express();
 
 // applying middlewares
 app.use(express.json());
+app.use(cookieParser());
 
 
 // ##### ROUTES #####
