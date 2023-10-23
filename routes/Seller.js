@@ -10,6 +10,6 @@ const {
 
 // ########## creating protected API Routes ##########
 router.post("/create-catalog", auth, isSeller, createCatalog);
-router.post("/orders", auth, isSeller, orders);
+router.get("/orders", auth, isSeller, orders);
 
 module.exports = router;
