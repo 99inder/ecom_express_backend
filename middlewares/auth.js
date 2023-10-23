@@ -19,7 +19,7 @@ exports.auth = async (req, res, next) => {
         //verify the token
         try {
             const decode = jwt.verify(token, process.env.JWT_SECRET);
-            console.log(decode);
+            // console.log(decode);
             req.user = decode;
         } catch (error) {
             return res.status(401).json({
@@ -32,11 +32,11 @@ exports.auth = async (req, res, next) => {
 
     } catch (error) {
         console.log("Error Occured While Authenticating the token.");
-        console.log(error),
-            res.status(500).json({
-                success: false,
-                message: "Something went wrong while validating token."
-            })
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong while validating token."
+        })
     }
 }
 
