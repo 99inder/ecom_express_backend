@@ -1,5 +1,7 @@
+// IMPORTS
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 require("dotenv").config();
 
 // Connecting to Database
@@ -12,9 +14,15 @@ const app = express();
 // applying middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(
+    cors({
+        origin: "*",
+        credentials: true
+    })
+);
 
 
-// ##### ROUTES #####
+// ##### IMPOPRTING & INTEGRATING ROUTES #####
 const userRoutes = require("./routes/User");
 app.use("/api/auth", userRoutes);
 
@@ -31,6 +39,7 @@ app.get("/", (req, res) => {
         message: "Your server is up and running..."
     })
 });
+// ##### IMPOPRTING & INTEGRATING ROUTES ENDS #####
 
 // Running the server
 const PORT = process.env.PORT || 4000;

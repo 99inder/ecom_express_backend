@@ -1,5 +1,7 @@
 // IMPORTS
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const JWT_SECRET = process.env.JWT_SECRET
 
 // auth
 exports.auth = async (req, res, next) => {
@@ -18,7 +20,7 @@ exports.auth = async (req, res, next) => {
 
         //verify the token
         try {
-            const decode = jwt.verify(token, process.env.JWT_SECRET);
+            const decode = jwt.verify(token, JWT_SECRET);
             // console.log(decode);
             req.user = decode;
         } catch (error) {
